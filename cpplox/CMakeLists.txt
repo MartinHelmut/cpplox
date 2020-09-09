@@ -12,7 +12,7 @@ if(APPLE)
   add_definitions(-DLOX_PLATFORM_MACOS=1)
 endif()
 
-add_executable(${NAME} CppLox/main.cpp)
+add_executable(${NAME} CppLox/Lox.cpp CppLox/Chunk.cpp CppLox/Chunk.hpp CppLox/Base.hpp)
 
 target_include_directories(${NAME} PRIVATE ./)
 target_link_libraries(${NAME} PRIVATE project_warnings)
