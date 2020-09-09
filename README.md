@@ -63,7 +63,7 @@ brew install ninja
 Clone the project with all submodules:
 
 ```shell script
-git clone --recurse-submodules -j8 git@github.com:MartinHelmut/plutus.git
+git clone --recurse-submodules -j8 git@github.com:MartinHelmut/cpplox.git
 ```
 
 ## Update
