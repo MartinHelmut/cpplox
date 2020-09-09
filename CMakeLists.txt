@@ -16,4 +16,8 @@ add_library(project_warnings INTERFACE)
 include(cmake/CompilerWarnings.cmake)
 set_project_warnings(project_warnings)
 
+# Dependencies
+add_subdirectory(vendor/fmt)
+
+# Application libraries and files
 add_subdirectory(cpplox)

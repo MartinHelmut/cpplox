@@ -5,6 +5,8 @@ Going through CraftingInterpreters C part but implementing it in C++. **Note:** 
 ## Contents
 
 * [Required tools](#required-tools)
+* [Setup](#setup)
+* [Update](#update)
 * [Build](#build)
 * [Run](#run)
 * [License addition](#license-addition)
@@ -54,6 +56,20 @@ You can install Ninja on Mac via brew:
 
 ```shell script
 brew install ninja
+```
+
+## Setup
+
+Clone the project with all submodules:
+
+```shell script
+git clone --recurse-submodules -j8 git@github.com:MartinHelmut/plutus.git
+```
+
+## Update
+
+```shell script
+git pull && git submodule update --init
 ```
 
 ## Build

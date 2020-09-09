@@ -2,6 +2,8 @@
 
 #include <utility>
 
+#include <fmt/core.h>
+
 namespace Lox {
 
 Chunk::Chunk(std::vector<OpCode> data) : m_ByteCode(std::move(data)) {
@@ -12,7 +14,7 @@ void Chunk::Write(OpCode byte) {
 }
 
 void Chunk::Disassemble(const std::string& name) const {
-  printf("== %s ==\n", name.c_str());
+  fmt::print("== {} ==\n", name);
 
   size_t offset{0};
   for (OpCode instruction : m_ByteCode) {
@@ -21,14 +23,14 @@ void Chunk::Disassemble(const std::string& name) const {
 }
 
 void Chunk::disassembleInstruction(OpCode instruction, size_t offset) {
-  printf("%04zu ", offset);
+  fmt::print("{:04d} ", offset);
 
   switch (instruction) {
     case OpCode::RETURN:
-      printf("RETURN\n");
+      fmt::print("RETURN\n");
       break;
     default:
-      printf("Unknown opcode %hhu\n", instruction);
+      fmt::print("Unknown OpCode {:d}\n", instruction);
   }
 }
 
