@@ -13,6 +13,11 @@ void Chunk::Write(OpCode byte) {
   m_ByteCode.push_back(byte);
 }
 
+void Chunk::Free() {
+  // Workaround to not only ::clear elements but free memory by reducing the capacity:
+  std::vector<OpCode>().swap(m_ByteCode);
+}
+
 void Chunk::Disassemble(const std::string& name) const {
   fmt::print("== {} ==\n", name);
 

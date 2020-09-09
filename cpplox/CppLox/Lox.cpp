@@ -8,6 +8,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] const char* argv[]) {
 
   chunk->Write(Lox::OpCode::RETURN);
   chunk->Disassemble("test chunk");
+  chunk->Free();
 
   return EXIT_SUCCESS;
 }

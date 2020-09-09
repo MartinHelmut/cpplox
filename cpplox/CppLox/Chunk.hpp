@@ -17,6 +17,11 @@ class Chunk {
   explicit Chunk(std::vector<OpCode> data);
 
   void Write(OpCode byte);
+  void Free();
+
+  [[nodiscard]] size_t Count() const { return m_ByteCode.size(); }
+  [[nodiscard]] size_t Size() const { return sizeof(OpCode) * m_ByteCode.size(); }
+
   void Disassemble(const std::string& name) const;
 
  private:
