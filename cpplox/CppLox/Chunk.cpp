@@ -2,41 +2,50 @@
 
 #include <utility>
 
-#include <fmt/core.h>
-
 namespace Lox {
 
-Chunk::Chunk(std::vector<OpCode> data) : m_ByteCode(std::move(data)) {
+Chunk::Chunk(std::vector<Byte> data) : m_ByteCode(std::move(data)) {
 }
 
-void Chunk::Write(OpCode byte) {
+void Chunk::Write(OpCode byte, size_t line) {
+  Write(static_cast<std::byte>(byte), line);
+}
+
+void Chunk::Write(Byte byte, size_t line) {
   m_ByteCode.push_back(byte);
+  m_Lines.push_back(line);
 }
 
 void Chunk::Free() {
   // Workaround to not only ::clear elements but free memory by reducing the capacity:
-  std::vector<OpCode>().swap(m_ByteCode);
+  std::vector<Byte>().swap(m_ByteCode);
+  std::vector<Value>().swap(m_Constants);
+  std::vector<size_t>().swap(m_Lines);
 }
 
-void Chunk::Disassemble(const std::string& name) const {
-  fmt::print("== {} ==\n", name);
+[[nodiscard]] Byte Chunk::Read(size_t offset) const {
+  return m_ByteCode[offset];
+};
 
-  size_t offset{0};
-  for (OpCode instruction : m_ByteCode) {
-    disassembleInstruction(instruction, offset++);
-  }
+[[nodiscard]] size_t Chunk::Count() const {
+  return m_ByteCode.size();
 }
 
-void Chunk::disassembleInstruction(OpCode instruction, size_t offset) {
-  fmt::print("{:04d} ", offset);
+[[nodiscard]] size_t Chunk::Size() const {
+  return sizeof(OpCode) * m_ByteCode.size();
+}
 
-  switch (instruction) {
-    case OpCode::RETURN:
-      fmt::print("RETURN\n");
-      break;
-    default:
-      fmt::print("Unknown OpCode {:d}\n", instruction);
-  }
+Byte Chunk::AddConstant(Value value) {
+  m_Constants.push_back(value);
+  return static_cast<Byte>(m_Constants.size() - 1);
+}
+
+[[nodiscard]] Value Chunk::GetConstant(Byte index) const {
+  return m_Constants[static_cast<unsigned long>(index)];
+}
+
+size_t Chunk::GetPosition(size_t index) const {
+  return m_Lines[index];
 }
 
 }  // namespace Lox
