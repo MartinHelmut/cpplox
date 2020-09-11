@@ -9,6 +9,7 @@ Going through CraftingInterpreters C part but implementing it in C++. **Note:** 
 * [Update](#update)
 * [Build](#build)
 * [Run](#run)
+* [Tests](#tests)
 * [Profiling](#profiling)
 * [License addition](#license-addition)
 
@@ -113,6 +114,14 @@ After [building the application](#build) you can either run the client in debug 
 
 # Release
 ./build/release/lox/client/Client
+```
+
+## Tests
+
+You can [build the application](#build) as you like (e.g. in debug mode) and run unit tests via:
+
+```shell script
+./build/debug/lox/tests/Tests
 ```
 
 ## Profiling

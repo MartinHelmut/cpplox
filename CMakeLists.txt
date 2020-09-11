@@ -17,7 +17,9 @@ set_project_warnings(project_warnings)
 
 # Dependencies
 add_subdirectory(vendor/spdlog)
+add_subdirectory(vendor/doctest)
 
 # Application libraries and files
 add_subdirectory(lox/core)
 add_subdirectory(lox/client)
+add_subdirectory(lox/tests)
