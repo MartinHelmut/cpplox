@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-#include "CppLox/Base.hpp"
+#include "CppLox/Core/Base.hpp"
 
 namespace Lox {
 

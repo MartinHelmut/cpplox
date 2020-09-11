@@ -12,12 +12,11 @@ include(cmake/StandardProjectSettings.cmake)
 
 # Link this "library" to use the warnings specified in CompilerWarnings.cmake
 add_library(project_warnings INTERFACE)
-
 include(cmake/CompilerWarnings.cmake)
 set_project_warnings(project_warnings)
 
 # Dependencies
-add_subdirectory(vendor/fmt)
+add_subdirectory(vendor/spdlog)
 
 # Application libraries and files
 add_subdirectory(cpplox)

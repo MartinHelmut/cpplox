@@ -8,11 +8,18 @@ if (DEBUG)
   add_definitions(-DDEBUG=${DEBUG} -DLOX_ENABLE_ASSERTS=${DEBUG})
 endif()
 
+if (PROFILE)
+  add_definitions(-DLOX_PROFILE=1)
+endif()
+
 if(APPLE)
   add_definitions(-DLOX_PLATFORM_MACOS=1)
 endif()
 
-add_executable(${NAME} CppLox/Lox.cpp CppLox/Chunk.cpp CppLox/Chunk.hpp CppLox/Base.hpp CppLox/Printer.cpp CppLox/Printer.hpp)
+add_executable(${NAME}
+  CppLox/Lox.cpp CppLox/Chunk.cpp CppLox/Chunk.hpp
+  CppLox/Core/Base.hpp CppLox/Core/Log.cpp CppLox/Core/Log.hpp
+  CppLox/Debug/Printer.hpp CppLox/Debug/Instrumentor.hpp)
 
 target_include_directories(${NAME} PRIVATE ./)
-target_link_libraries(${NAME} PRIVATE project_warnings fmt)
+target_link_libraries(${NAME} PRIVATE project_warnings spdlog::spdlog)

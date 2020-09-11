@@ -9,6 +9,7 @@ Going through CraftingInterpreters C part but implementing it in C++. **Note:** 
 * [Update](#update)
 * [Build](#build)
 * [Run](#run)
+* [Profiling](#profiling)
 * [License addition](#license-addition)
 
 ## Required tools
@@ -112,6 +113,23 @@ Run the application either in debug or release mode:
 
 # Debug
 ./build/release/cpplox/CppLox
+```
+
+## Profiling
+
+There is a special profiling build running cmake with `PROFILE=1`:
+
+```shell script
+# Create config files
+cmake -GNinja -DDEBUG=0 -DPROFILE=1 -DCMAKE_BUILD_TYPE=Release --build build/profile
+# Build profile runner
+ninja -C build/profile
+```
+
+Running the profiler executable will generate a `lox-profile.json` file that can be used with any Chromium based browser tracing tool, e.g. [chrome://tracing](chrome://tracing/). Just drag and drop the file into the tracing view. To generate the file run:
+
+```shell script
+./build/profile/cpplox/CppLox
 ```
 
 ## License addition
