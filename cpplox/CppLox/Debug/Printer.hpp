@@ -9,8 +9,7 @@ namespace Lox {
 
 class Printer {
  public:
-  explicit Printer(Ref<Chunk> chunk);
-  void Disassemble(const std::string& name);
+  void Disassemble(const Ref<Chunk>& chunk, const std::string& name);
 
  private:
   void DisassembleInstruction();
