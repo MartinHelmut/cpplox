@@ -2,7 +2,7 @@
 
 #include <utility>
 
-#include "CppLox/Debug/Instrumentor.hpp"
+#include "Core/Debug/Instrumentor.hpp"
 
 namespace Lox {
 

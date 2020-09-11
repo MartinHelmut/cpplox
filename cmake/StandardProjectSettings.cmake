@@ -17,3 +17,16 @@ endif()
 
 # Generate compile_commands.json to make it easier to work with clang based tools
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Inject debugging statement into code
+if (DEBUG)
+  add_definitions(-DDEBUG=${DEBUG} -DLOX_ENABLE_ASSERTS=${DEBUG})
+endif()
+
+if (PROFILE)
+  add_definitions(-DLOX_PROFILE=1)
+endif()
+
+if(APPLE)
+  add_definitions(-DLOX_PLATFORM_MACOS=1)
+endif()

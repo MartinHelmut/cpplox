@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.17)
 
 project(
-  CppLox
+  lox/core
   VERSION 1.0.0
   DESCRIPTION "Going through CraftingInterpreters C part but implementing it in C++."
   LANGUAGES CXX)
@@ -19,4 +19,5 @@ set_project_warnings(project_warnings)
 add_subdirectory(vendor/spdlog)
 
 # Application libraries and files
-add_subdirectory(cpplox)
+add_subdirectory(lox/core)
+add_subdirectory(lox/client)

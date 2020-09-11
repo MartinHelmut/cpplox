@@ -105,14 +105,14 @@ ninja -C build/release
 
 ## Run
 
-Run the application either in debug or release mode:
+After [building the application](#build) you can either run the client in debug or release mode:
 
 ```shell script
 # Debug
-./build/debug/cpplox/CppLox
+./build/debug/lox/client/Client
 
-# Debug
-./build/release/cpplox/CppLox
+# Release
+./build/release/lox/client/Client
 ```
 
 ## Profiling
@@ -129,7 +129,7 @@ ninja -C build/profile
 Running the profiler executable will generate a `lox-profile.json` file that can be used with any Chromium based browser tracing tool, e.g. [chrome://tracing](chrome://tracing/). Just drag and drop the file into the tracing view. To generate the file run:
 
 ```shell script
-./build/profile/cpplox/CppLox
+./build/profile/lox/client/Client
 ```
 
 ## License addition

@@ -2,9 +2,9 @@
 
 #include <string>
 
-#include "CppLox/Core/Log.hpp"
-#include "CppLox/Core/Base.hpp"
-#include "CppLox/Chunk.hpp"
+#include "Core/Log.hpp"
+#include "Core/Base.hpp"
+#include "Core/Chunk.hpp"
 
 namespace Lox {
 

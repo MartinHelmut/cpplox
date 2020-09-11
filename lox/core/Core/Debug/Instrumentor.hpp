@@ -8,7 +8,7 @@
 #include <string>
 #include <thread>
 
-#include "CppLox/Core/Log.hpp"
+#include "Core/Log.hpp"
 
 namespace Lox {
 

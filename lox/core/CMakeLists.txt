@@ -1,0 +1,15 @@
+set(CMAKE_CXX_STANDARD 17)
+set(NAME "Core")
+
+include(${CMAKE_SOURCE_DIR}/cmake/StaticAnalyzers.cmake)
+
+add_library(${NAME} STATIC
+  Core.hpp Core/Chunk.cpp Core/Chunk.hpp
+  Core/Base.hpp Core/Log.cpp Core/Log.hpp
+  Core/Debug/Printer.hpp Core/Debug/Instrumentor.hpp)
+
+target_include_directories(${NAME} PRIVATE ${CMAKE_SOURCE_DIR}/lox/core)
+
+target_link_libraries(${NAME}
+  PRIVATE project_warnings
+  PUBLIC spdlog::spdlog)
