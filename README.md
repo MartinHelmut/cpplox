@@ -12,6 +12,7 @@ Going through CraftingInterpreters C part but implementing it in C++. **Note:** 
 * [Tests](#tests)
 * [Profiling](#profiling)
 * [License addition](#license-addition)
+* [External dependencies](#external-dependencies)
 
 ## Required tools
 
@@ -145,3 +146,11 @@ Running the profiler executable will generate a `lox-profile.json` file that can
 
 Just to be sure, here a reference to the license model of crafting interpreters:
 https://github.com/munificent/craftinginterpreters/blob/master/LICENSE
+
+## External dependencies
+
+List of externally used dependencies:
+
+* https://github.com/fmtlib/fmt
+* https://github.com/gabime/spdlog
+* https://github.com/onqtam/doctest
