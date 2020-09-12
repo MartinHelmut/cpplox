@@ -12,4 +12,4 @@ target_include_directories(${NAME} PRIVATE ${CMAKE_SOURCE_DIR}/lox/core)
 
 target_link_libraries(${NAME}
   PRIVATE project_warnings
-  PUBLIC spdlog::spdlog)
+  PUBLIC fmt spdlog)

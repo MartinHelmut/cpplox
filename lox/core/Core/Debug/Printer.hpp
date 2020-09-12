@@ -2,7 +2,8 @@
 
 #include <string>
 
-#include "Core/Log.hpp"
+#include <fmt/format.h>
+
 #include "Core/Base.hpp"
 #include "Core/Chunk.hpp"
 
