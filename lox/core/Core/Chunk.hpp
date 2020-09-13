@@ -21,8 +21,8 @@ class Chunk {
   Chunk() = default;
   explicit Chunk(std::vector<Byte> data);
 
-  void Write(OpCode byte, size_t line);
-  void Write(Byte byte, size_t line);
+  void Write(OpCode byte, int line);
+  void Write(Byte byte, int line);
   [[nodiscard]] Byte Read(size_t offset) const;
 
   void Free();
@@ -32,12 +32,12 @@ class Chunk {
   Byte AddConstant(Value value);
   [[nodiscard]] Value GetConstant(Byte index) const;
 
-  [[nodiscard]] size_t GetPosition(size_t index) const;
+  [[nodiscard]] int GetPosition(size_t index) const;
 
  private:
   std::vector<Byte> m_ByteCode{};
   std::vector<Value> m_Constants{};
-  RLEBuffer<size_t> m_Lines{};
+  RLEBuffer<int> m_Lines{};
 };
 
 }  // namespace Lox

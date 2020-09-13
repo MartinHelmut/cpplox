@@ -9,11 +9,11 @@ namespace Lox {
 Chunk::Chunk(std::vector<Byte> data) : m_ByteCode(std::move(data)) {
 }
 
-void Chunk::Write(OpCode byte, size_t line) {
+void Chunk::Write(OpCode byte, int line) {
   Write(static_cast<std::byte>(byte), line);
 }
 
-void Chunk::Write(Byte byte, size_t line) {
+void Chunk::Write(Byte byte, int line) {
   LOX_PROFILE_FUNCTION();
 
   m_ByteCode.push_back(byte);
@@ -60,7 +60,7 @@ Byte Chunk::AddConstant(Value value) {
   return m_Constants[static_cast<unsigned long>(index)];
 }
 
-size_t Chunk::GetPosition(size_t index) const {
+int Chunk::GetPosition(size_t index) const {
   LOX_PROFILE_FUNCTION();
 
   return m_Lines.Read(index);
