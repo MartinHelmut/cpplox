@@ -9,7 +9,7 @@ struct Element {
   T Value;
   int Length;
 
-  Element(T value, size_t length) : Value(value), Length(length) {
+  Element(T value, int length) : Value(value), Length(length) {
   }
 };
 
@@ -47,11 +47,11 @@ class RLEBuffer {
     m_Data[lastIndex].Length++;
   }
 
-  T Read(size_t index) noexcept {
-    size_t position{0};
+  T Read(size_t index) const {
+    int position{0};
     for (Element ele : m_Data) {
-      for (size_t i{0}; i < ele.Length; i++) {
-        if (position + i == index) {
+      for (int i{0}; i < ele.Length; i++) {
+        if (position + i == static_cast<int>(index)) {
           return ele.Value;
         }
       }
@@ -61,6 +61,10 @@ class RLEBuffer {
 
     LOX_ASSERT(false, "RLEBuffer::Read() index out of bounds");
     return m_Data.back().Value;
+  }
+
+  void Free() {
+    std::vector<Element<T>>().swap(m_Data);
   }
 
   [[nodiscard]] size_t Count() const {

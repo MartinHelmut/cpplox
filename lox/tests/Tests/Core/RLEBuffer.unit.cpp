@@ -89,3 +89,13 @@ TEST_SUITE("Lox::RLEBuffer::Read()") {
     CHECK(buffer.Read(4) == 3);
   }
 }
+
+TEST_SUITE("Lox::RLEBuffer::Free()") {
+  TEST_CASE("frees the stored memory") {
+    Lox::RLEBuffer<int> buffer{1, 2, 2, 2, 3};
+
+    CHECK(buffer.Size() == (3 * sizeof(int) * 2));
+    buffer.Free();
+    CHECK(buffer.Size() == 0);
+  }
+}

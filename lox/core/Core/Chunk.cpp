@@ -17,7 +17,7 @@ void Chunk::Write(Byte byte, size_t line) {
   LOX_PROFILE_FUNCTION();
 
   m_ByteCode.push_back(byte);
-  m_Lines.push_back(line);
+  m_Lines.Write(line);
 }
 
 void Chunk::Free() {
@@ -26,7 +26,7 @@ void Chunk::Free() {
   // Workaround to not only ::clear elements but free memory by reducing the capacity:
   std::vector<Byte>().swap(m_ByteCode);
   std::vector<Value>().swap(m_Constants);
-  std::vector<size_t>().swap(m_Lines);
+  m_Lines.Free();
 }
 
 [[nodiscard]] Byte Chunk::Read(size_t offset) const {
@@ -63,7 +63,7 @@ Byte Chunk::AddConstant(Value value) {
 size_t Chunk::GetPosition(size_t index) const {
   LOX_PROFILE_FUNCTION();
 
-  return m_Lines[index];
+  return m_Lines.Read(index);
 }
 
 }  // namespace Lox

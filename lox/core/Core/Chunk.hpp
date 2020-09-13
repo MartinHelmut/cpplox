@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "Core/Base.hpp"
+#include "Core/RLEBuffer.hpp"
 
 namespace Lox {
 
@@ -36,7 +37,7 @@ class Chunk {
  private:
   std::vector<Byte> m_ByteCode{};
   std::vector<Value> m_Constants{};
-  std::vector<size_t> m_Lines{};
+  RLEBuffer<size_t> m_Lines{};
 };
 
 }  // namespace Lox
