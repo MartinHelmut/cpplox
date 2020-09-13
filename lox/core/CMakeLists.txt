@@ -6,7 +6,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/StaticAnalyzers.cmake)
 add_library(${NAME} STATIC
   Core.hpp Core/Chunk.cpp Core/Chunk.hpp
   Core/Base.hpp Core/Log.cpp Core/Log.hpp
-  Core/Debug/Printer.hpp Core/Debug/Instrumentor.hpp)
+  Core/Debug/Printer.hpp Core/Debug/Instrumentor.hpp Core/RLEBuffer.hpp)
 
 target_include_directories(${NAME} PRIVATE ${CMAKE_SOURCE_DIR}/lox/core)
 

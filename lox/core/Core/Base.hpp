@@ -2,6 +2,20 @@
 
 #include <memory>
 
+#if LOX_ENABLE_ASSERTS == 1
+#include <csignal>
+#include "Core/Log.hpp"
+#define LOX_ASSERT(x, ...)                             \
+  {                                                   \
+    if (!(x)) {                                       \
+      LOX_ERROR("Assertion failed: {0}", __VA_ARGS__); \
+      raise(SIGTRAP);                                 \
+    }                                                 \
+  }
+#else
+#define LOX_ASSERT(x, ...)
+#endif
+
 namespace Lox {
 
 template <typename T>
