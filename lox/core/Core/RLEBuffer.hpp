@@ -38,7 +38,9 @@ class RLEBuffer {
 
     // Last element is different, add new
     size_t lastIndex{m_Data.size() - 1};
-    if (m_Data[lastIndex].Value != value) {
+    // Not using operator!= here to reduce needed operator count for passed types
+    // NOLINTNEXTLINE
+    if (!(m_Data[lastIndex].Value == value)) {
       m_Data.emplace_back(value, 1);
       return;
     }
