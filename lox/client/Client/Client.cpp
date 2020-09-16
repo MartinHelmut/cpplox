@@ -9,15 +9,16 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] const char* argv[]) {
 
   {
     LOX_PROFILE_SCOPE("TestChunk");
+    const auto vm{Lox::CreateScope<Lox::VirtualMachine>()};
     const auto chunk{Lox::CreateRef<Lox::Chunk>()};
 
-    Lox::Byte constant{chunk->AddConstant(1.2)};
+    Lox::Byte constant{chunk->WriteConstant(1.2)};
     chunk->Write(Lox::OpCode::CONSTANT, 123);
     chunk->Write(constant, 123);
 
     chunk->Write(Lox::OpCode::RETURN, 123);
 
-    LOX_PRINTER_DISASSEMBLE(chunk, "TestChunk");
+    vm->Interpret(chunk);
   }
 
   LOX_PROFILE_END_SESSION();

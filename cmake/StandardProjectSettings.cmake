@@ -20,7 +20,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Inject debugging statement into code
 if (DEBUG)
-  add_definitions(-DDEBUG=${DEBUG} -DLOX_ENABLE_ASSERTS=${DEBUG})
+  add_definitions(-DDEBUG=${DEBUG} -DLOX_ENABLE_ASSERTS=${DEBUG} -DLOX_ENABLE_DISASSEMBLE=${DEBUG})
 endif()
 
 if (PROFILE)

@@ -38,14 +38,14 @@ void Chunk::Write(Byte byte, int line) {
   return sizeof(OpCode) * m_ByteCode.size();
 }
 
-Byte Chunk::AddConstant(Value value) {
+Byte Chunk::WriteConstant(Value value) {
   LOX_PROFILE_FUNCTION();
 
   m_Constants.push_back(value);
   return static_cast<Byte>(m_Constants.size() - 1);
 }
 
-[[nodiscard]] Value Chunk::GetConstant(Byte index) const {
+[[nodiscard]] Value Chunk::ReadConstant(Byte index) const {
   LOX_PROFILE_FUNCTION();
 
   return m_Constants[static_cast<unsigned long>(index)];

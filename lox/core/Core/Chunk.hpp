@@ -28,8 +28,8 @@ class Chunk {
   [[nodiscard]] size_t Count() const;
   [[nodiscard]] size_t Size() const;
 
-  Byte AddConstant(Value value);
-  [[nodiscard]] Value GetConstant(Byte index) const;
+  Byte WriteConstant(Value value);
+  [[nodiscard]] Value ReadConstant(Byte index) const;
 
   [[nodiscard]] int GetPosition(size_t index) const;
 

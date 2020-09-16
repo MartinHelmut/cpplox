@@ -5,6 +5,8 @@
 #include "Core/Base.hpp"
 #include "Core/Log.hpp"
 #include "Core/Chunk.hpp"
+#include "Core/Stack.hpp"
+#include "Core/VirtualMachine.hpp"
 
 // Misc ------------------------------
 
