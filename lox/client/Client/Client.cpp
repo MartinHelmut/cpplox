@@ -18,8 +18,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] const char* argv[]) {
     chunk->Write(Lox::OpCode::RETURN, 123);
 
     LOX_PRINTER_DISASSEMBLE(chunk, "TestChunk");
-
-    chunk->Free();
   }
 
   LOX_PROFILE_END_SESSION();

@@ -20,15 +20,6 @@ void Chunk::Write(Byte byte, int line) {
   m_Lines.Write(line);
 }
 
-void Chunk::Free() {
-  LOX_PROFILE_FUNCTION();
-
-  // Workaround to not only ::clear elements but free memory by reducing the capacity:
-  std::vector<Byte>().swap(m_ByteCode);
-  std::vector<Value>().swap(m_Constants);
-  m_Lines.Free();
-}
-
 [[nodiscard]] Byte Chunk::Read(size_t offset) const {
   LOX_PROFILE_FUNCTION();
 

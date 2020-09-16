@@ -25,7 +25,6 @@ class Chunk {
   void Write(Byte byte, int line);
   [[nodiscard]] Byte Read(size_t offset) const;
 
-  void Free();
   [[nodiscard]] size_t Count() const;
   [[nodiscard]] size_t Size() const;
 

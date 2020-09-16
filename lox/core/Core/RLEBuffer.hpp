@@ -65,10 +65,6 @@ class RLEBuffer {
     return m_Data.back().Value;
   }
 
-  void Free() {
-    std::vector<Element<T>>().swap(m_Data);
-  }
-
   [[nodiscard]] size_t Count() const {
     size_t count{0};
     for (Element ele : m_Data) {
