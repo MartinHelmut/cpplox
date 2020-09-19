@@ -31,10 +31,11 @@ InterpretResult VirtualMachine::Run() {
         fmt::print("{}\n", m_Stack.Pop());
         return InterpretResult::OK;
       }
+      default: {
+        return InterpretResult::RUNTIME_ERROR;
+      }
     }
   }
-
-  return InterpretResult::RUNTIME_ERROR;
 }
 
 }  // namespace Lox
