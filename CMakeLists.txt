@@ -6,8 +6,6 @@ project(
   DESCRIPTION "Going through CraftingInterpreters C part but implementing it in C++."
   LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17)
-
 include(cmake/StandardProjectSettings.cmake)
 
 # Link this "library" to use the warnings specified in CompilerWarnings.cmake
