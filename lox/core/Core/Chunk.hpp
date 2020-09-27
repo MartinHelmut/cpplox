@@ -13,6 +13,11 @@ using Byte = std::byte;
 
 enum class OpCode : unsigned char {
   CONSTANT,
+  NEGATE,
+  ADD,
+  SUBTRACT,
+  MULTIPLY,
+  DIVIDE,
   RETURN,
 };
 

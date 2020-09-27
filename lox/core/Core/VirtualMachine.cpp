@@ -27,6 +27,34 @@ InterpretResult VirtualMachine::Run() {
         m_Stack.Push(constant);
         break;
       }
+      case OpCode::ADD: {
+        double b{m_Stack.Pop()};
+        double a{m_Stack.Pop()};
+        m_Stack.Push(a + b);
+        break;
+      }
+      case OpCode::SUBTRACT: {
+        double b{m_Stack.Pop()};
+        double a{m_Stack.Pop()};
+        m_Stack.Push(a - b);
+        break;
+      }
+      case OpCode::MULTIPLY: {
+        double b{m_Stack.Pop()};
+        double a{m_Stack.Pop()};
+        m_Stack.Push(a * b);
+        break;
+      }
+      case OpCode::DIVIDE: {
+        double b{m_Stack.Pop()};
+        double a{m_Stack.Pop()};
+        m_Stack.Push(a / b);
+        break;
+      }
+      case OpCode::NEGATE: {
+        m_Stack.Push(-m_Stack.Pop());
+        break;
+      }
       case OpCode::RETURN: {
         fmt::print("{}\n", m_Stack.Pop());
         return InterpretResult::OK;
